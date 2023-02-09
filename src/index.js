@@ -84,19 +84,28 @@ const testData = {
   created: "2017-11-04T18:48:46.250Z",
 };
 
-const card = document.createElement("div");
-const cardTitle = document.createElement("div");
-const image = document.createElement("img");
+const createCard = (props) => {
+  const card = document.createElement("div");
+  const cardTitle = document.createElement("div");
+  const image = document.createElement("img");
 
-card.classList.add("card");
-cardTitle.classList.add("card__title");
-image.classList.add("card__image");
+  card.classList.add("card");
+  cardTitle.classList.add("card__title");
+  image.classList.add("card__image");
 
-image.alt = "Rick Sanchez";
-image.src = "https://rickandmortyapi.com/api/character/avatar/1.jpeg";
-cardTitle.innerText = "Rick Sanchez";
+  image.alt = props.name;
+  image.src = props.imageSrc;
+  cardTitle.innerText = props.name;
 
-card.appendChild(image);
-card.appendChild(cardTitle);
+  card.appendChild(image);
+  card.appendChild(cardTitle);
 
-app.appendChild(card);
+  return card;
+};
+
+app.appendChild(
+  createCard({
+    name: "Rick Sanchez",
+    imageSrc: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+  })
+);
