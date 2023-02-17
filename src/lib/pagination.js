@@ -3,22 +3,22 @@ const createPage = (currentPage) => {
 
   element.classList.add("pagination__item");
 
-  if (currentPage === 1) {
-    element.classList.add("pagination__item_current");
-  }
-
   element.innerText = currentPage;
 
   return element;
 };
 
-export const createPagesList = (number, onClick) => {
+export const createPagesList = (number, current, onClick) => {
   const pagesList = document.createElement("ul");
 
   pagesList.classList.add("pagination");
 
   for (let i = 1; i <= number; i++) {
     const element = createPage(i);
+
+    if (i === current) {
+      element.classList.add("pagination__item_current");
+    }
 
     element.addEventListener("click", () => onClick(i));
 
