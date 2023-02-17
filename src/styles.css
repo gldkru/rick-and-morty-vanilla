@@ -5,6 +5,7 @@ body {
   font-family: "Roboto", sans-serif;
   line-height: 1.4;
   background: #0c4a6e;
+  color: #fff;
 }
 
 .card-list {
@@ -42,4 +43,22 @@ body {
 .card__subtitle {
   margin-top: 0.25rem;
   opacity: 0.75;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pagination__item {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #fff;
+  margin: 0 0.5rem 0.5rem 0;
+  cursor: pointer;
+}
+
+.pagination__item:hover {
+  background: #fff;
+  color: #444;
 }
