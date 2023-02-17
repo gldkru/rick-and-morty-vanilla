@@ -11,19 +11,27 @@ const getCharacters = async () => {
 
 const createCard = (props) => {
   const card = document.createElement("div");
-  const cardTitle = document.createElement("div");
   const image = document.createElement("img");
+  const cardContent = document.createElement("div");
+  const cardTitle = document.createElement("div");
+  const cardSubTitle = document.createElement("div");
 
   card.classList.add("card");
-  cardTitle.classList.add("card__title");
   image.classList.add("card__image");
+  cardContent.classList.add("card__content");
+  cardTitle.classList.add("card__title");
+  cardSubTitle.classList.add("card__subtitle");
 
   image.alt = props.name;
   image.src = props.imageSrc;
   cardTitle.innerText = props.name;
+  cardSubTitle.innerText = props.species;
+
+  cardContent.appendChild(cardTitle);
+  cardContent.appendChild(cardSubTitle);
 
   card.appendChild(image);
-  card.appendChild(cardTitle);
+  card.appendChild(cardContent);
 
   return card;
 };
@@ -37,6 +45,7 @@ const createList = (data) => {
     const cardData = {
       name: data[i].name,
       imageSrc: data[i].image,
+      species: data[i].species,
     };
     const card = createCard(cardData);
 
