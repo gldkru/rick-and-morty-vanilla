@@ -16,14 +16,16 @@ const getCharacters = async (params) => {
   return data;
 };
 
-const createCharactersList = async (page = 1) => {
+const createCharactersList = async (currentPage = 1) => {
   app.innerHTML = "";
 
-  const { info, results: characters } = await getCharacters({ page });
+  const { info, results: characters } = await getCharacters({
+    page: currentPage,
+  });
   const list = createList(characters);
 
-  const pages = createPagesList(info.pages, page, (currentPage) =>
-    createCharactersList(currentPage)
+  const pages = createPagesList(info.pages, currentPage, (page) =>
+    createCharactersList(page)
   );
 
   app.appendChild(list);
