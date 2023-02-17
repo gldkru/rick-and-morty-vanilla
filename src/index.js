@@ -1,10 +1,11 @@
 import { createList } from "./lib/elements";
+import { endpoints } from "./lib/const";
 import "./styles.css";
 
 const app = document.getElementById("app");
 
 const getCharacters = async () => {
-  const response = await fetch("https://rickandmortyapi.com/api/character");
+  const response = await fetch(endpoints.characters);
   const data = await response.json();
 
   return data;
