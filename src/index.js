@@ -5,8 +5,10 @@ import "./styles.css";
 
 const app = document.getElementById("app");
 
-const getCharacters = async () => {
-  const response = await fetch(endpoints.characters);
+const getCharacters = async (params) => {
+  const response = await fetch(
+    `${endpoints.characters}?${new URLSearchParams(params)}`
+  );
   const data = await response.json();
 
   console.log(data);
@@ -17,7 +19,11 @@ const getCharacters = async () => {
 const createCharactersList = async () => {
   const { info, results: characters } = await getCharacters();
   const list = createList(characters);
-  const pages = createPagesList(info.pages);
+  const pages = createPagesList(info.pages, (page) =>
+    getCharacters({
+      page,
+    })
+  );
 
   app.appendChild(list);
   app.prepend(pages);

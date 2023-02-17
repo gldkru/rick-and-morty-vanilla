@@ -58,6 +58,7 @@ body {
   cursor: pointer;
 }
 
+.pagination__item_current,
 .pagination__item:hover {
   background: #fff;
   color: #444;
